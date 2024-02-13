@@ -9,6 +9,10 @@
   <p>Iframe</p>
   <script>
     window.addEventListener("DOMContentLoaded", () => {
+      window.addEventListener("message", (messageEvent) => {
+        console.warn('Iframe received message: ', messageEvent.data)
+      })
+      
       const p = document.createElement('p')
       p.innerText = 'origin: ' + window.location.origin
       document.body.appendChild(p)
