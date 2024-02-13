@@ -16,7 +16,11 @@
       window.addEventListener("message", (messageEvent) => {
         console.warn({ messageEvent })
       })
-      window.parent.postMessage("HELLO FROM IFRAME", 'https://maxwellbenton.github.io')
+      try {
+        window.parent.postMessage("HELLO FROM IFRAME", document.referrer)
+      } catch (e) {
+        console.warn(e)
+      }
     })
   </script>
 </body>
